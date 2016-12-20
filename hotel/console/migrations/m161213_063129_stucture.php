@@ -167,21 +167,7 @@ INSERT INTO `room` (`code_room`, `nomer_room`, `cost`, `type`, `сharacteristic`
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
---
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` smallint(6) NOT NULL DEFAULT '10',
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
+-- 
 --
 -- Дамп данных таблицы `user`
 --
@@ -232,13 +218,9 @@ ALTER TABLE `room`
   ADD KEY `code_room` (`code_room`);
 
 --
--- Индексы таблицы `user`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
+--
+
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -270,10 +252,7 @@ ALTER TABLE `Cooperator`
 ALTER TABLE `room`
   MODIFY `code_room` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT для таблицы `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
