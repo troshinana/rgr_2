@@ -7,10 +7,10 @@
 
 use yii\helpers\Html;
 
-$this->title = 'Ошибка';
+$this->title = 'РћС€РёР±РєР°';
 ?>
 <div class="site-error">
-    <h1>Ошибка №<?= $exception->statusCode ?></h1>
+    <h1>РћС€РёР±РєР° в„–<?= $exception->statusCode?></h1>
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
     </div>
