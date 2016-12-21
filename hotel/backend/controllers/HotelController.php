@@ -14,32 +14,30 @@ use common\models\LoginForm;
 class HotelController extends Controller
 {
 public function actionIndex2()
-	{
-		$rooms = Room::find()->all();
-	return $this->render('index2', ['rooms'=>$rooms]);
-	}
+{
+$rooms = Room::find()->all();
+return $this->render('index2', ['rooms'=>$rooms]);
+}
 public function actionIndexa()
-	{
-	$applications = Application::find()->having('status_application=2')->orderBy(['full_name'=>SORT_ASC])->all();
-	return $this->render('indexa', ['applications'=>$applications]);
-	}
+{
+$applications = Application::find()->having('status_application=2')->orderBy(['full_name'=>SORT_ASC])->all();
+return $this->render('indexa', ['applications'=>$applications]);
+}
 public function actionEditt($id){
-		$application=Application::findOne($id);
-		if ($application) {
-		
-		
-		if (isset($_POST['Application'])) {
-			$application->attributes=$_POST['Application'];
-			If ($application->save()) {
-				if ($application->status_application=='0'){
-					return $this->render('view');
-				}
-				return $this->render('index5',['application'=>$application]);
-			}
-		}
-		}else {
-			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
-		}
+$application=Application::findOne($id);
+if ($application) {
+if (isset($_POST['Application'])) {
+$application->attributes=$_POST['Application'];
+If ($application->save()) {
+if ($application->status_application=='0'){
+return $this->render('view');
+}
+return $this->render('index5',['application'=>$application]);
+}
+}
+}else {
+throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
+}
 	
 		return $this->render('Edit_application',['application'=>$application]); 
 		
