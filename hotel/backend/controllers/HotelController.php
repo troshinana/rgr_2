@@ -41,7 +41,10 @@ public function actionEditt($id){
 				}
 				return $this->render('index5',['application'=>$application]);
 			}
+		}else {
+			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
 		}
+	
 		return $this->render('Edit_application',['application'=>$application]); 
 		
 	}
@@ -56,6 +59,9 @@ public function actionEditt($id){
 			If ($room->save()) {
 				return $this->render('view5',['room'=>$room]);
 			}
+	
+		}else {
+			throw new \yii\web\NotFoundHttpException ('Комната не найдена');
 		}
 		return $this->render('edit1',['room'=>$room]); 
 		
@@ -67,14 +73,22 @@ public function actionDelete ($id)
 		if (!$application) {
 			return 'Заявка найдена';
 		}
+	if ($id) {
 		$application->delete();
 		return $this->redirect(['hotel/indexa']);
+		} else {
+			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
+		}
 	}	
 	
 	public function actionIndex5($application)
 	{
+		if ($application) {
 	$application=Application::findOne($id);
 	return $this->render('index5', ['application'=>$application]);
+			} else {
+			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
+		}
 	}
 	
 	
@@ -84,8 +98,12 @@ public function actionDelete ($id)
 		if (!$room) {
 			return 'Номер найден';
 		}
+		if ($code_room) {
 		$room->delete();
 		return $this->redirect(['hotel/index2']);
+		} else {
+			throw new \yii\web\NotFoundHttpException ('Номер не найден');
+		}
 	}	
 
 public function actionAdd3($application){
@@ -97,6 +115,8 @@ public function actionAdd3($application){
 			if ($booking_room->save()){
 				return $this -> render('view1', ['booking_room'=>$booking_room]);
 			}
+		}else {
+			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
 		}
 		return $this -> render('add3', ['booking_room'=> $booking_room]);	
 	}
