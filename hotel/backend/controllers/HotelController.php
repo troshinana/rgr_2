@@ -96,15 +96,11 @@ class HotelController extends Controller
 		$booking_room= new BookingRoom;
 		$booking_room->status=1;
 		$booking_room->id=$application;
-		if ($application) {
-			if (isset($_POST['BookingRoom'])){
-				$booking_room->attributes=$_POST['BookingRoom'];
-				if ($booking_room->save()){
-					return $this -> render('view1', ['booking_room'=>$booking_room]);
-				}
+		if (isset($_POST['BookingRoom'])){
+			$booking_room->attributes=$_POST['BookingRoom'];
+			if ($booking_room->save()){
+				return $this -> render('view1', ['booking_room'=>$booking_room]);
 			}
-		}else {
-			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
 		}
 		return $this -> render('add3', ['booking_room'=> $booking_room]);	
 	}
