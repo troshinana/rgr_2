@@ -1,7 +1,5 @@
 <?php
 namespace backend\controllers;
-
-
 use backend\models\BookingRoom;
 use backend\models\Room;
 use backend\models\Application;
@@ -10,8 +8,6 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
-
-
 /**
  * Site controller
  */
@@ -27,12 +23,11 @@ public function actionIndexa()
 	$applications = Application::find()->having('status_application=2')->orderBy(['full_name'=>SORT_ASC])->all();
 	return $this->render('indexa', ['applications'=>$applications]);
 	}
-
 public function actionEditt($id){
 		$application=Application::findOne($id);
-		if (!$application) {
-			return 'Заявка найдена';
-		} 
+		if ($application) {
+		
+		
 		if (isset($_POST['Application'])) {
 			$application->attributes=$_POST['Application'];
 			If ($application->save()) {
@@ -41,6 +36,7 @@ public function actionEditt($id){
 				}
 				return $this->render('index5',['application'=>$application]);
 			}
+		}
 		}else {
 			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
 		}
@@ -48,21 +44,20 @@ public function actionEditt($id){
 		return $this->render('Edit_application',['application'=>$application]); 
 		
 	}
-
 	public function actionEdit1($code_room){
 		$room=Room::findOne($code_room);
-		if (!$room) {
-			return 'Номер найден';
-		} 
+		if ($room) {			
 		if (isset($_POST['Room'])) {
 			$room->attributes=$_POST['Room'];
 			If ($room->save()) {
 				return $this->render('view5',['room'=>$room]);
 			}
 	
-		}else {
+		} 
+	} else {
 			throw new \yii\web\NotFoundHttpException ('Комната не найдена');
 		}
+		
 		return $this->render('edit1',['room'=>$room]); 
 		
 	}
@@ -70,13 +65,13 @@ public function actionEditt($id){
 public function actionDelete ($id)
 	{
 		$application=Application::findOne($id);
-		if (!$application) {
-			return 'Заявка найдена';
-		}
-	if ($id) {
+		if ($application) {
+			
+	
 		$application->delete();
 		return $this->redirect(['hotel/indexa']);
-		} else {
+		
+		}else {
 			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
 		}
 	}	
@@ -95,26 +90,27 @@ public function actionDelete ($id)
 	public function actionDelete1 ($code_room)
 	{
 		$room=Room::findOne($code_room);
-		if (!$room) {
-			return 'Номер найден';
-		}
+		if ($room) {
+			
 		if ($code_room) {
 		$room->delete();
 		return $this->redirect(['hotel/index2']);
-		} else {
+		} 
+		}else {
 			throw new \yii\web\NotFoundHttpException ('Номер не найден');
 		}
 	}	
-
 public function actionAdd3($application){
 	$booking_room= new BookingRoom;
 	$booking_room->status=1;
 	$booking_room->id=$application;
+	if ($application) {
 	if (isset($_POST['BookingRoom'])){
 			$booking_room->attributes=$_POST['BookingRoom'];
 			if ($booking_room->save()){
 				return $this -> render('view1', ['booking_room'=>$booking_room]);
 			}
+		}
 		}else {
 			throw new \yii\web\NotFoundHttpException ('Заявка не найдена');
 		}
