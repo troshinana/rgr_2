@@ -27,15 +27,16 @@ class HotelController extends Controller
 	public function actionIndex2()
 	{
 		$rooms = Room::find()->having('cost!= 0')->all();
-	return $this->render('index2', ['rooms'=>$rooms]);
+		return $this->render('index2', ['rooms'=>$rooms]);
 	}
 	
 
-	public function actionAdd($room){
-	$application= new Application;
-	$application->status_application=2;
-	$application->code_room=$room;
-	if (isset($_POST['Application'])){
+	public function actionAdd($room)
+	{
+		$application= new Application;
+		$application->status_application=2;
+		$application->code_room=$room;
+		if (isset($_POST['Application'])){
 			$application->attributes=$_POST['Application'];
 			if ($application->save()){
 				return $this -> render('add2',['application'=> $application]);
@@ -46,18 +47,7 @@ class HotelController extends Controller
 		
 	public function actionIndexa()
 	{
-	$applications = Application::find()->having('status_application=0')->orderBy(['full_name'=>SORT_ASC])->all();
-	return $this->render('indexa', ['applications'=>$applications]);
+		$applications = Application::find()->having('status_application=0')->orderBy(['full_name'=>SORT_ASC])->all();
+		return $this->render('indexa', ['applications'=>$applications]);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
- 
