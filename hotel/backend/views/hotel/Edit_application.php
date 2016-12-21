@@ -1,5 +1,5 @@
 <?php 
-use yii\bootstrap\activeform;
+use yii\bootstrap\ActiveForm;
 use yii\helpers\arrayHelper;
 ?>
 <h2> Рассмотрение заявки </h2>
