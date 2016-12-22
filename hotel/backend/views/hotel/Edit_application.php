@@ -10,5 +10,5 @@ use yii\helpers\arrayHelper;
 		<?=$form->field($application,'arrival_date')?>
 		<?=$form->field($application,'date_of_departure')?>
 		<?=$form->field($application,'status_application')->listbox([0=>"Отказ",1=>"Принять"])?>
-		<button class="btn btn-primary" type="submit"> Добавить </button>
+		<button class="btn btn-primary" type="submit"> Перейти к бронированию </button>
 <?php  ActiveForm::end(); ?>
