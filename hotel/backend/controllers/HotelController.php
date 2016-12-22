@@ -28,11 +28,15 @@ class HotelController extends Controller
 	{
 		$application=Application::findOne($id);
 		if ($application) {
+			$application->status_application=2;
 			if (isset($_POST['Application'])) {
 				$application->attributes=$_POST['Application'];
 				If ($application->save()) {
 					if ($application->status_application=='0'){
 						return $this->render('view');
+					}
+					if ($application->status_application=='2'){
+						return $this->render('view2');
 					}
 				return $this->render('index5',['application'=>$application]);
 				}
