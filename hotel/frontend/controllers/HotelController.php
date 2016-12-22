@@ -33,7 +33,7 @@ class HotelController extends Controller
 
 	public function actionAdd($room)
 	{ 	
-		$r=Flight::findOne($room);
+		$r=Room::findOne($room);
 		if (!$r) {
 			throw new \yii\web\NotFoundHttpException ('Комната не найдена');
 		}
