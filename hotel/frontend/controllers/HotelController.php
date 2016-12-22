@@ -33,19 +33,18 @@ class HotelController extends Controller
 
 	public function actionAdd($room)
 	{ 	
-		
-		if ($room) {
-			$application= new Application;
-			$application->status_application=2;
-			$application->code_room=$room;
-			if (isset($_POST['Application'])){
-				$application->attributes=$_POST['Application'];
-				if ($application->save()){
-					return $this -> render('add2',['application'=> $application]);
-				}
-			}
-		}else{
+		$r=Flight::findOne($room);
+		if (!$r) {
 			throw new \yii\web\NotFoundHttpException ('Комната не найдена');
+		}
+		$application= new Application;
+		$application->status_application=2;
+		$application->code_room=$room;
+		if (isset($_POST['Application'])){
+			$application->attributes=$_POST['Application'];
+			if ($application->save()){
+				return $this -> render('add2',['application'=> $application]);
+				}
 		}
 		return $this -> render('add', ['application'=> $application]);	
 	}
