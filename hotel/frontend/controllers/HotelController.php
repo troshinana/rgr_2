@@ -33,7 +33,7 @@ class HotelController extends Controller
 
 	public function actionAdd($room)
 	{ 	
-		$room=Room::findOne($room);
+		
 		if ($room) {
 			$application= new Application;
 			$application->status_application=2;
