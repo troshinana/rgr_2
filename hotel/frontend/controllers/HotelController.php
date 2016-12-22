@@ -32,7 +32,8 @@ class HotelController extends Controller
 	
 
 	public function actionAdd($room)
-	{ 	if ($room) {
+	{ 	
+		if ($room) {
 			$application= new Application;
 			$application->status_application=2;
 			$application->code_room=$room;
