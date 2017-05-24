@@ -2,7 +2,7 @@
 use yii\helpers\Html; 
 use yii\bootstrap\ActiveForm; 
 $this->registerjsfile(
-"@web/js/regform.js",
+"@web/Js/regform.js",
 ['depends'=>[\yii\web\JqueryAsset::className()]]
 );
 ?>
