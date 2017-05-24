@@ -27,7 +27,7 @@ class HotelController extends Controller
 	public function actionIndex2()
 	{
 		$rooms = Room::find()->having('cost!= 0')->all();
-		return $this->render('Index2', ['rooms'=>$rooms]);
+		return $this->render('index2', ['rooms'=>$rooms]);
 	}
 	
 	public function actionAdd()
