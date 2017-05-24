@@ -6,7 +6,6 @@
 		<th>Цена за сутки</th> 
 		<th>Тип номера</th> 
 		<th>Характеристики</th> 
-		<th>Действия</th>
 	</tr>
 	<?php foreach($rooms as $room){ ?>
 	<tr>
@@ -14,11 +13,10 @@
 		<td> <?= htmlspecialchars($room->cost) ?> </td>
 		<td> <?= htmlspecialchars($room->type) ?> </td>
 		<td> <?= htmlspecialchars($room->сharacteristic) ?> </td>
-		<td> 
-			<?= Html::a('Оставить заявку', ['hotel/add','room'=>$room->code_room],['class'=>'btn btn-primary']) ?>
 		
-		</td>
 	</tr>
+	
 	 <?php } ?>
+	 <?= Html::a('Оставить заявку', ['hotel/add'],['class'=>'btn btn-primary']) ?>
   	</table>
 	

@@ -122,3 +122,30 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+#places {
+	width:160px;
+	height:40px;
+	border:1px solid black;
+}
+#zapis {
+	width:160px;
+	height:40px;
+	border:1px solid black;
+}
+.code_room {
+	width:20px;
+	height:20px;
+	border:1px solid black;
+	background-color:gray;
+	display:inline-block;
+	margin:5px;
+	color: white;
+	text-align:center;
+}
+.active-code_room{
+	background-color:blue;
+}
+.reserved {
+	background-color:red;
+	cursor:default;
+}

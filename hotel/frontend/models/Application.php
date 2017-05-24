@@ -36,6 +36,7 @@ class Application extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+		
             [['full_name', 'date_of_birth', 'residential_address', 'phone_number', 'code_room', 'arrival_date', 'date_of_departure'], 'required'
 			, 'message'=>'Поле обязательно для заполнения'],
             [['full_name', 'residential_address', 'phone_number'], 'string'],
@@ -58,7 +59,7 @@ class Application extends \yii\db\ActiveRecord
             'date_of_birth' => 'Дата рождения(yyyy-mm-dd)',
             'residential_address' => 'Адрес проживания',
             'phone_number' => 'Номер телефона',
-            'code_room' => 'Code Room',
+            'code_room' => 'Номер комнаты',
             'arrival_date' => 'Дата заезда',
             'date_of_departure' => 'Дата отъезда',
             'status_application' => 'Status Application',

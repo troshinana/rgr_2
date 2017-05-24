@@ -1,10 +1,15 @@
 <?php
-use yii\bootstrap\ActiveForm; ?>
-<?php Use \yii\helpers\Html; ?>
-<h2> Информация по бронированию:  </h2>
-	<p> Номер:  <?=htmlspecialchars($application->getCodeRoom()->one()->nomer_room)?> </p>
-	<p>Тип номера - <?=htmlspecialchars($application->getCodeRoom()->one()->type)?></p> 
-<p>Характеристика номера - <?=htmlspecialchars($application->getCodeRoom()->one()->сharacteristic)?> </p>
+use yii\helpers\Html; 
+use yii\bootstrap\ActiveForm; 
+$this->registerJsFile(
+"@web/js/regform.js",
+['depends'=>[\yii\web\JqueryAsset::className()]]
+);
+?>
+<script type="text/javascript">
+var reserved=<?php echo json_encode(array_unique($reserved))?>
+
+</script>
 <h2> Заполните свои данные </h2>
 <?php $form = ActiveForm::begin(); ?>
 <?= $form->field($application, 'full_name') ?>
@@ -19,5 +24,8 @@ use yii\bootstrap\ActiveForm; ?>
 		'language' => 'ru',
 		'dateFormat' => 'yyyy-MM-dd',
 	])  ?>
-<button class="btn btn-primary" type="submit">Добавить</button>
+	<div id="zapis"> 1 этаж - </div>
+	<div id="places"> 2 этаж - </div>
+	<?= $form->field($application, 'code_room')?>
+	<button class="btn btn-primary" type="submit">Добавить</button>
 <?php ActiveForm::end(); ?>
